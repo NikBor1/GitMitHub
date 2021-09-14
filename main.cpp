@@ -18,15 +18,9 @@ int main()
 
     std::cin >> sFilm;
 
-
-    std::cout << std::endl << "Enter book, you recommend to read, please: ";
-    std::string sParty;
-
-    std::cin >> sParty;
-
     std::ofstream fout("biglist.txt");
 
-    fout << sName << " " << sSurname << " - " << sFilm << " - " << sParty << ";" << std::endl;
+    fout << sName << " " << sSurname << " - " << sFilm << ";" << std::endl;
     fout.close();
 
 
