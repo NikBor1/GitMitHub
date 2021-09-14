@@ -1,1 +1,1 @@
-This code asks a name, a surname and a favorite film and save this information in txt file.
+This code asks a name, a surname and a recommended book and save this information in txt file.
