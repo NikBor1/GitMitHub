@@ -13,7 +13,7 @@ int main()
 
     std::cin >> sName >> sSurname;
 
-    std::cout << std::endl << "Enter your favorite film, please: ";
+    std::cout << std::endl << "Enter book, you recommend to read, please: ";
     std::string sFilm;
 
     std::cin >> sFilm;
