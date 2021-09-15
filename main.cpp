@@ -16,12 +16,23 @@ int main()
     std::cout << std::endl << "Enter book, you recommend to read, please: ";
     std::string sFilm;
 
-    std::cin >> sFilm;
+    getline(std::cin, sFilm);
+    getline(std::cin, sFilm);
 
     std::ofstream fout("biglist.txt");
 
     fout << sName << " " << sSurname << " - " << sFilm << ";" << std::endl;
     fout.close();
+
+    std::string answer;
+
+    std::ifstream fin("biglist.txt");
+
+    while(getline(fin, answer))
+        std::cout << answer << std::endl;
+
+
+    fin.close();
 
 
     return 0;
