@@ -6,34 +6,42 @@ int main()
 {
 
 
+    int choiser;
 
-    std::cout << "Enter your name and surname, please: ";
-    std::string sName;
-    std::string sSurname;
+    std::cout << "Enter 1 to ask user, enter 2 to show results ";
+    std::cin >> choiser;
 
-    std::cin >> sName >> sSurname;
+    if(choiser == 1)
+    {
+        std::cout << "Enter your name and surname, please: ";
+        std::string sName;
+        std::string sSurname;
 
-    std::cout << std::endl << "Enter book, you recommend to read, please: ";
-    std::string sFilm;
+        std::cin >> sName >> sSurname;
 
-    getline(std::cin, sFilm);
-    getline(std::cin, sFilm);
+        std::cout << std::endl << "Enter book, you recommend to read, please: ";
+        std::string sFilm;
 
-    std::ofstream fout("biglist.txt");
+        getline(std::cin, sFilm);
+        getline(std::cin, sFilm);
 
-    fout << sName << " " << sSurname << " - " << sFilm << ";" << std::endl;
-    fout.close();
+        std::ofstream fout("biglist.txt");
 
-    std::string answer;
+        fout << sName << " " << sSurname << " - " << sFilm << ";" << std::endl;
+        fout.close();
+    }
+    else
+    {
+        std::string answer;
 
-    std::ifstream fin("biglist.txt");
+        std::ifstream fin("biglist.txt");
 
-    while(getline(fin, answer))
-        std::cout << answer << std::endl;
+        while(getline(fin, answer))
+            std::cout << answer << std::endl;
 
 
-    fin.close();
-
+        fin.close();
+    }
 
     return 0;
 }
