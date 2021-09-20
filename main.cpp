@@ -72,9 +72,18 @@ int main()
             }
         }
 
+        int differentBooks = 1;
+
+        for(int i = 1; i < ii; i ++)
+        {
+            if(answerTable[2][i] != answerTable[2][i - 1])
+                differentBooks ++;
+        }
+
         for(int i = 0; i < ii; i ++)
             std::cout << answerTable[1][i] << " " << answerTable[0][i] << " " << answerTable[2][i] << std::endl;
 
+        std::cout << ii << " people, " << differentBooks << " book(s)." << std::endl;
 
     }
 
