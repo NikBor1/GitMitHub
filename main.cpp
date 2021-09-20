@@ -39,6 +39,12 @@ int main()
 
         int ii = 0;
 
+        int sortPos;
+
+        std::cout << "Enter sorting base position number: ";
+
+        std::cin >> sortPos;
+
         while(fin >> answer)
         {
             answerTable[ii % 3].push_back(answer);
@@ -55,7 +61,7 @@ int main()
             for(int j = 1; j < ii - i; j ++)
             {
 
-                if(answerTable[1][j] < answerTable[1][j - 1])
+                if(answerTable[sortPos - 1][j] < answerTable[sortPos - 1][j - 1])
                 {
                     std::swap(answerTable[1][j], answerTable[1][j - 1]);
                     std::swap(answerTable[0][j], answerTable[0][j - 1]);
