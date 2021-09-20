@@ -1,3 +1,6 @@
-
+questionlist.txt
 biglist.txt
+*.o
+*.exe
+.gitignore
 
