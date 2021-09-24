@@ -15,7 +15,7 @@ int main()
         case 1:
         {
             std::ifstream fin("questionlist.txt");
-            std::ofstream fout("biglist.txt");
+            std::ofstream fout("biglist.txt", std::ios::app);
 
             std::string question;
             std::string answer;
@@ -33,15 +33,29 @@ int main()
             fout.close();
             break;
         }
-
+        
         case 2:
         {
             std::string answer;
-            std::vector <std::vector <std::string> > answerTable (3);
+            std::vector <std::vector <std::string> > answerTable(0);
 
-            std::ifstream fin("biglist.txt");
+            std::ifstream fin("questionlist.txt");
 
-            int ii = 0;
+            int amQuestions = 0;
+
+            while(getline(fin, answer))
+              amQuestions ++;
+
+            std::vector <std::string> v (0);
+
+            for(int i = 0; i < amQuestions; i ++)
+               answerTable.push_back(v);
+
+            fin.close();
+
+            std::ifstream fino("biglist.txt");
+
+            int amUsers = 0;
 
             int sortPos;
 
@@ -49,45 +63,39 @@ int main()
 
             std::cin >> sortPos;
 
-            while(fin >> answer)
+            while(getline(fino, answer))
             {
-                answerTable[ii % 3].push_back(answer);
-                ii ++;
+                answerTable[amUsers % amQuestions].push_back(answer);
+                amUsers ++;
             }
 
-            ii /= 3;
+            amUsers /= amQuestions;
 
-            fin.close();
+            fino.close();
 
-
-            for(int i = 0; i < ii; i ++)
+            for(int i = 0; i < amUsers; i ++)
             {
-                for(int j = 1; j < ii - i; j ++)
-                {
+               for(int j = 1; j < amUsers - i; j ++)
+               {
 
-                    if(answerTable[sortPos - 1][j] < answerTable[sortPos - 1][j - 1])
-                    {
-                        std::swap(answerTable[1][j], answerTable[1][j - 1]);
-                        std::swap(answerTable[0][j], answerTable[0][j - 1]);
-                        std::swap(answerTable[2][j], answerTable[2][j - 1]);
-                    }
+                  if(answerTable[sortPos - 1][j] < answerTable[sortPos - 1][j - 1])
+                  {
+                      for(int k = 0; k < amQuestions; k ++)
+                          std::swap(answerTable[k][j], answerTable[k][j - 1]);
+                  }
 
 
-                }
+              }
             }
 
-            int differentBooks = 1;
-
-            for(int i = 1; i < ii; i ++)
+            for(int i = 0; i < amUsers; i ++)
             {
-                if(answerTable[2][i] != answerTable[2][i - 1])
-                    differentBooks ++;
+              for(int j = 0; j < amQuestions; j ++)
+                  std::cout << answerTable[j][i] << "; ";
+
+              std::cout << std::endl;
             }
-
-            for(int i = 0; i < ii; i ++)
-                std::cout << answerTable[1][i] << " " << answerTable[0][i] << " " << answerTable[2][i] << std::endl;
-
-            std::cout << ii << " people, " << differentBooks << " book(s)." << std::endl;
+            
             break;
         }
 
@@ -148,7 +156,6 @@ int main()
                 int num_questions;
                 std::cout << "Enter a number of questions: ";
                 std::cin >> num_questions;
-
                 std::ofstream fin("questionlist.txt", std::ios::app);
                 std::string question;
 
@@ -161,8 +168,7 @@ int main()
                 fin.close();
 
             }
-        }
-
+            }
         }
 
 
